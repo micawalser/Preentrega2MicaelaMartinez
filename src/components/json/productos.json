@@ -1,0 +1,21 @@
+[
+    {"index": 1, "nombre": "conjunto amarillo", "precio": 7000, "categoria": "conjuntos", "descripcion": "loremmmmmmmmmmmm",
+ "stock": 4, "imagen": "./public/amarillo.png"},
+
+ {"index": 2, "nombre": "Conjunto naranja", "precio": 7000, "categoria": "conjuntos", "descripcion": "Top verde talle m de poliestano ",
+ "stock": 5, "imagen": "./public/naranja.jpeg"},
+
+ {"index": 3, "nombre": "Top blanco", "precio": 3000, "categoria": "tops", "descripcion": "loremmmmmmmmmmmm",
+ "stock": 3,"imagen": "./public/topwhite.jpeg"},
+
+ {"index": 4, "nombre": "Top negro", "precio": 3000, "categoria": "tops", "descripcion": "loremmmmmmmmmmmm",
+ "stock": 2, "imagen": "./public/topnegro.jpeg"} ,
+
+ {"index": 5, "nombre": "Top rosa", "precio": 3000, "categoria": "tops", "descripcion": "loremmmmmmmmmmmm",
+ "stock": 2, "imagen": "./public/tops.jpeg"} ,
+
+ {"index": 6, "nombre": "Conjunto violeta", "precio": 7000, "categoria": "conjuntos", "descripcion": "loremmmmmmmmmmmm",
+ "stock": 2, "imagen": "./public/violeta.jpeg"}
+
+ 
+]
