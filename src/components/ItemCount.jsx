@@ -1,59 +1,53 @@
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
+const ItemCount = ({stock, onAdd}) => {
+    const [counter, setCounter] = useState(1);
+    const [itemStock, setItemStock] = useState(stock);
+    const [vendido, setVendido] = useState(false);
 
-const ItemCount = ({stock}) => {
- const [items, setItems] = useState(1);
- const [itemStock, setItemStock] = useState(stock);
- 
- const incrementarStock = () => {
-    if (items < itemStock ){
-       setItems(items + 1) ; 
+    const decrementarStock = () => {
+        if (counter > 1) {
+            setCounter(counter - 1);
+        }
+    }
+
+    const incrementarStock = () => {
+        if (counter < itemStock) {
+            setCounter(counter + 1);
+        }
+    }
+
+    const addToCart = (quantity) => {
+        if (counter <= itemStock) {
+            setCounter(1);
+            setItemStock(itemStock - quantity);
+            setVendido(true);
+            onAdd(quantity);
+        }
     }
     
- }
-
- const decrementarStock = () => {
-    if (items > 1) {
-        setItems(items - 1) ;
-    }
-    
- }
- 
- const onAdd = () => {
-    if (itemStock >= items) {
-        setItemStock (itemStock-items);
-        setItems (1);
-      console.log ("Agregaste: " + items + " productos al carrito!")   
-    }
- } 
- 
- 
- useEffect(() => {
-    setItemStock(stock);
-}, [stock]);
-
+    useEffect(() => {
+        setItemStock(stock);
+    }, [stock])
 
     return (
-        <div className="container">
-        <div className="row">
-            <div className="col">
-            <div className="btn-group">
-  <button className="btn btn-primary" onClick={decrementarStock}>-</button>
-  <button className="btn btn-primary"> {items} </button>
-  <button className="btn btn-primary" onClick={incrementarStock}>+</button>
-</div>
+        <div>
+            <div className="row mb-3">
+                <div className="col-md-6 text-center">
+                    <div className="btn-group" role="group" aria-label="Basic outlined example">
+                        <button type="button" className="btn btn-outline-primary" onClick={decrementarStock}> - </button>
+                        <button type="button" className="btn btn-outline-primary">{counter}</button>
+                        <button type="button" className="btn btn-outline-primary" onClick={incrementarStock}> + </button>
+                    </div>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col-md-6 text-center">
+                    {vendido ? <Link to={"/cart"} className="btn btn-outline-primary">Terminar Mi Compra</Link> : <button type="button" className="btn btn-outline-primary" onClick={() => { addToCart(counter) }}>Agregar al Carrito</button>}
+                </div>
             </div>
         </div>
-
-<div className="row my-1">
-    <div className="col">
-        <button className=" btn btn-primary" onClick={onAdd}> Agregar al carrito</button>
-    </div>
-</div>
-
-        </div>
-    
     )
 }
-
 export default ItemCount ;
